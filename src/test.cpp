@@ -47,13 +47,13 @@ int main(int argv, char** argc)
 	c.getMat()[1][0] = 139.0;
 	c.getMat()[1][1] = 154.0;
 
-	DenseMatrix<double> cComputed = a * b;
+	Matrix<double>& cComputed = a * b;
 
 	cout << "This is cComputed:\n";
 	for(int i = 0; i < cComputed.getRowDim(); i++)
 	{
 		for(int j = 0; j < cComputed.getColDim(); j++)
-			cout << " " << cComputed.getMat()[i][j];
+			cout << " " << cComputed.getIJ(i,j);
 		cout << endl;
 	}
 

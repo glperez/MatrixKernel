@@ -1,5 +1,5 @@
 /*
- * MatrixTest.cpp
+ * DenseMatrixTest.cpp
  *
  *  Created on: Mar 23, 2017
  *      Author: daeden
@@ -7,13 +7,14 @@
 
 #include "DenseMatrixTest.h"
 
-CPPUNIT_TEST_SUITE_REGISTRATION(MatrixTest);
+CPPUNIT_TEST_SUITE_REGISTRATION(DenseMatrixTest);
 
-DenseMatrix<double> MatrixTest::a(2,3);
-DenseMatrix<double> MatrixTest::b(3,2);
-DenseMatrix<double> MatrixTest::c(2);
+DenseMatrix<double> DenseMatrixTest::a(2, 3);
+DenseMatrix<double> DenseMatrixTest::b(3, 2);
+DenseMatrix<double> DenseMatrixTest::c(2);
 
-void MatrixTest::setUp() {
+void DenseMatrixTest::setUp()
+{
 	// Matrix A
 	// | 1 2 3 |
 	// | 4 5 6 |
@@ -45,29 +46,31 @@ void MatrixTest::setUp() {
 
 }
 
-void MatrixTest::tearDown() {
+void DenseMatrixTest::tearDown()
+{
 	//delete a;
 	//delete b;
 	//delete c;
 }
 
-void MatrixTest::MyTest() {
-
-	float fnum { 2.00001f };
-	std::cout << "\n" << "testing!\n";
-	std::cout << "testing!\n";
+void DenseMatrixTest::matMulTest()
+{
 
 	Matrix<double>& computedC = a * b;
 
-	std::cout << "This is cComputed:\n";
-	for(int i = 0; i < computedC.getRowDim(); i++)
-	{
-		for(int j = 0; j < computedC.getColDim(); j++)
-			std::cout << " " << computedC.getIJ(i,j);
-		std::cout << std::endl;
-	}
-
-	//CPPUNIT_ASSERT_EQUAL(fnum, 2.00001f);
 	CPPUNIT_ASSERT(computedC != b);
 	CPPUNIT_ASSERT(computedC == c);
+}
+void DenseMatrixTest::matAddTest()
+{
+	CPPUNIT_FAIL("Not implemented yet!");
+}
+void DenseMatrixTest::matSubTest()
+{
+	CPPUNIT_FAIL("Not implemented yet!");
+}
+
+void DenseMatrixTest::matEqualityTest()
+{
+	CPPUNIT_FAIL("Not implemented yet!");
 }

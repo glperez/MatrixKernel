@@ -12,8 +12,7 @@ bin_PROGRAMS = unit_test test
 # Build information for each library
 
 # Sources for libMatMult
-libMatMult_la_SOURCES = ./datastructures/Matrix.cpp\ 
-						./datastructures/DenseMatrix.cpp
+libMatMult_la_SOURCES = ./datastructures/Matrix.cpp ./datastructures/DenseMatrix.cpp
 
 # Linker options libTestProgram
 libMatMult_la_LDFLAGS = 

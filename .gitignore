@@ -7,7 +7,7 @@
 *.lo
 *.so
 *.so.*
-.lib
+.libs
 .deps
 .autotools
 Makefile
@@ -31,3 +31,6 @@ compile
 depcomp
 m4/libtool.m4
 m4/lt*.m4
+*.lai
+*.a
+.dirstamp

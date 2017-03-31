@@ -12,15 +12,22 @@
 
 #include "DenseMatrix.h"
 
-class MatrixTest: public CPPUNIT_NS::TestFixture {
-	CPPUNIT_TEST_SUITE (MatrixTest);
-	CPPUNIT_TEST (MyTest);
+class DenseMatrixTest: public CPPUNIT_NS::TestFixture {
+	CPPUNIT_TEST_SUITE (DenseMatrixTest);
+	CPPUNIT_TEST (matMulTest);
+	CPPUNIT_TEST (matAddTest);
+	CPPUNIT_TEST (matSubTest);
+	CPPUNIT_TEST (matEqualityTest);
 	CPPUNIT_TEST_SUITE_END();
 public:
 	void setUp();
 	void tearDown();
 
-	void MyTest();
+	void matMulTest();
+	void matAddTest();
+	void matSubTest();
+
+	void matEqualityTest();
 protected:
 	static DenseMatrix<double> a;
 	static DenseMatrix<double> b;

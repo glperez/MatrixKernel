@@ -8,12 +8,25 @@
 #include "Matrix.h"
 
 template<class T>
-bool Matrix<T>::operator==(Matrix<T>& that)
+bool Matrix<T>::operator==(const Matrix<T>& that) const
 {
 	if(this->cDim != that.getColDim() || this->rDim != that.getRowDim())
 		return false;
 
-	for(int i = 0; i < this->cDim; i++)
-		return true;
+	for(int i = 0; i < this->rDim; i++)
+		for(int j = 0; j < this->cDim; j++)
+			if(this->getIJ(i,j) != that.getIJ(i,j))
+				return false;
+
 	return true;
 }
+template<class T>
+bool Matrix<T>::operator!=(const Matrix<T>& that) const
+{
+	return !(*this == that);
+}
+
+template class Matrix<double> ;
+template class Matrix<float> ;
+template class Matrix<int> ;
+
