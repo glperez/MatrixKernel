@@ -53,7 +53,7 @@ int main(int argv, char** argc)
 	for(int i = 0; i < cComputed.getRowDim(); i++)
 	{
 		for(int j = 0; j < cComputed.getColDim(); j++)
-			cout << " " << cComputed.getIJ(i,j);
+			cout << " " << cComputed[i][j];
 		cout << endl;
 	}
 

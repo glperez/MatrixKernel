@@ -15,7 +15,7 @@ bool Matrix<T>::operator==(const Matrix<T>& that) const
 
 	for(int i = 0; i < this->rDim; i++)
 		for(int j = 0; j < this->cDim; j++)
-			if(this->getIJ(i,j) != that.getIJ(i,j))
+			if((*this)[i][j] != that[i][j])
 				return false;
 
 	return true;

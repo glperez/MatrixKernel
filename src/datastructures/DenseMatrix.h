@@ -27,11 +27,10 @@ public:
 	virtual Matrix<T>& operator-(const Matrix<T>& b) const;
 	virtual Matrix<T>& operator*(const Matrix<T>& b) const;
 
+	T* operator[](const int i) const;
+
 	bool operator==(const Matrix<T>& b) const;
 	bool operator!=(const Matrix<T>& b) const;
-
-	virtual const T& getIJ(unsigned int i, unsigned int j) const;
-
 	//Matrix<T>& operator=(const Matrix<T>&& that);
 
 	//double determinant();

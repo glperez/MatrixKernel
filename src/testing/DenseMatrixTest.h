@@ -32,7 +32,9 @@ protected:
 	static DenseMatrix<double> a;
 	static DenseMatrix<double> b;
 	static DenseMatrix<double> c;
-
+	static DenseMatrix<double> d;
+	static DenseMatrix<double> e;
+	static DenseMatrix<double> f;
 };
 
 #endif /* DENSEMATRIXTEST_H_ */

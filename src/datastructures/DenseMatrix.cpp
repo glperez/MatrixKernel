@@ -64,6 +64,7 @@ DenseMatrix<T>::~DenseMatrix()
 // C = A x B
 template<class T>
 Matrix<T>& DenseMatrix<T>::operator*(const Matrix<T>& b) const{
+
 	if (Matrix<T>::cDim != b.getRowDim())
 		throw 20;
 
@@ -72,16 +73,11 @@ Matrix<T>& DenseMatrix<T>::operator*(const Matrix<T>& b) const{
 	for (int i = 0; i < this->rDim; i++)
 		for (int j = 0; j < b.getColDim(); j++)
 			for (int k = 0; k < Matrix<T>::cDim; k++)
-				c.mat[i][j] += mat[i][k] * b.getIJ(k,j);
+				c[i][j] += mat[i][k]*b[k][j];
 
 	return c;
 }
 
-template<class T>
-const T& DenseMatrix<T>::getIJ(unsigned int i, unsigned int j) const
-{
-	return this->mat[i][j];
-}
 // C = a - b
 template<class T>
 Matrix<T>& DenseMatrix<T>::operator-(const Matrix<T>& b) const
@@ -93,7 +89,7 @@ Matrix<T>& DenseMatrix<T>::operator-(const Matrix<T>& b) const
 
 	for (int i = 0; i < this->rDim; i++)
 		for (int j = 0; j < b.getColDim(); j++)
-			c.mat[i][j] = this->mat[i][j] - b.getIJ(i,j);
+			c[i][j] = mat[i][j] - b[i][j];
 
 	return c;
 }
@@ -110,7 +106,7 @@ Matrix<T>& DenseMatrix<T>::operator+(const Matrix<T>& b) const
 
 	for (int i = 0; i < this->rDim; i++)
 		for (int j = 0; j < b.getColDim(); j++)
-			c.mat[i][j] = this->mat[i][j] + b.getIJ(i,j);
+			c[i][j] = mat[i][j] + b[i][j];
 
 	return c;
 }
@@ -123,7 +119,7 @@ bool DenseMatrix<T>::operator==(const Matrix<T>& b) const
 
 	for (int i = 0; i < this->rDim; i++)
 		for (int j = 0; j < b.getColDim(); j++)
-			if (this->mat[i][j] != b.getIJ(i,j))
+			if (mat[i][j] != b[i][j])
 				return false;
 
 	return true;
@@ -134,6 +130,15 @@ bool DenseMatrix<T>::operator!=(const Matrix<T>& b) const
 {
 	return !(*this == b);
 	//return false;
+}
+
+template<class T>
+T* DenseMatrix<T>::operator[](const int i) const
+{
+	if(i >= this->rDim)
+		throw 30;
+
+	return this->mat[i];
 }
 
 template class DenseMatrix<double> ;

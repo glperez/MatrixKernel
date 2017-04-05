@@ -13,14 +13,17 @@ class Matrix {
 protected:
 	const unsigned int rDim;
 	const unsigned int cDim;
+
 public:
 	Matrix(const unsigned int size) : rDim(size), cDim(size) {}
 	Matrix(const unsigned int rDim, const unsigned int cDim) : rDim(rDim), cDim(cDim) {}
 	virtual ~Matrix() {}
-	virtual const T& getIJ(unsigned int, unsigned int) const = 0 ;
+
 	virtual Matrix<T>& operator+(const Matrix<T>& b) const = 0;
 	virtual Matrix<T>& operator-(const Matrix<T>& b) const = 0;
 	virtual Matrix<T>& operator*(const Matrix<T>& b) const = 0;
+
+	virtual T* operator[](const int i) const = 0;
 
 	virtual bool operator==(const Matrix<T>& b) const;
 	virtual bool operator!=(const Matrix<T>& b) const;
